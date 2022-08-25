@@ -1,0 +1,30 @@
+<ng-container *ngIf="data$ | async as data">
+  <ul class="covid-list">
+    <li *ngFor="let state of data" class="colid-list-item">
+      <h3>{{state.name}}</h3>
+      <table>
+        <tr>
+          <th>Cases</th>
+          <th>Tests</th>
+          <th>Hospitalized</th>
+          <th>in ICU</th>
+          <th>on Ventilation</th>
+          <th>Outcomes</th>
+          <th>Total Tests results</th>
+        </tr>
+        <tbody>
+          <tr>
+            <td>{{state.probableCases | na}}</td>
+            <td>{{state.totalTestResults | na}}</td>
+            <td>{{state.hospitalizedCurrently | na}}</td>
+            <td>{{state.inIcuCurrently | na}}</td>
+            <td>{{state.onVentilatorCurrently | na}}</td>
+            <td>{{state.deathConfirmed | na}}</td>
+            <td>{{state.totalTestsViral | na}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="state-notes">{{state.notes}}</p>
+    </li>
+  </ul>
+</ng-container>
