@@ -1,34 +1,14 @@
-
-export interface IStateMetadata {
-  state: string;
-  notes: string;
-  covid19Site: string;
-  covid19SiteSecondary: string;
-  covid19SiteTertiary: string;
-  covid19SiteQuaternary: string;
-  covid19SiteQuinary: string;
-  twitter: string;
-  covid19SiteOld: string;
-  covidTrackingProjectPreferredTotalTestUnits: string;
-  covidTrackingProjectPreferredTotalTestField: string;
-  totalTestResultsField: string;
-  pui: string;
-  pum: boolean;
-  name: string;
-  fips: string;
-}
-
 export interface IStateCurrentData {
+  _id: string;
   date: number;
   state: string;
   positive: number;
   probableCases: number | null;
   negative: number | null;
   pending: number | null;
-  totalTestResultsSource: "totalTestsViral";
-  totalTestResults: 1731628;
-  hospitalizedCurrently: 33;
-  hospitalizedCumulative: 1293;
+  totalTestResults: number;
+  hospitalizedCurrently: number;
+  hospitalizedCumulative: number;
   inIcuCurrently: number | null;
   inIcuCumulative: number | null;
   onVentilatorCurrently: number;
@@ -77,4 +57,12 @@ export interface IStateCurrentData {
   grade: string;
 }
 
-export type ICovidStateData = IStateMetadata & IStateCurrentData;
+export interface IStateMetadata {
+  state: string;
+  notes: string;
+  _id: string;
+}
+
+export type ICovidStateData = IStateCurrentData & {
+  metadata: IStateMetadata
+};

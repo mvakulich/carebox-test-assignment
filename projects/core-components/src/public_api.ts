@@ -10,3 +10,5 @@ export * from './lib/components/filters/filters.module';
 
 export * from './lib/pipes/na.pipe';
 export * from './lib/pipes/pipes.module';
+
+export * from './lib/rxjs/LoadinState'

@@ -1,7 +1,9 @@
 <ng-container *ngIf="data$ | async as data">
-  <ul class="covid-list">
-    <li *ngFor="let state of data" class="colid-list-item">
-      <h3>{{state.name}}</h3>
+  <span *ngIf="data.state === 'loading'">Loading....</span>
+  <span *ngIf="data.state === 'error'">{{data.error.message}}</span>
+  <ul *ngIf="data.state === 'success'" class="covid-list">
+    <li *ngFor="let state of data.data" class="colid-list-item">
+      <h3>{{state.metadata.name}}</h3>
       <table>
         <tr>
           <th>Cases</th>
@@ -24,7 +26,7 @@
           </tr>
         </tbody>
       </table>
-      <p class="state-notes">{{state.notes}}</p>
+      <markdown>{{state.metadata.notes}}</markdown>
     </li>
   </ul>
 </ng-container>
