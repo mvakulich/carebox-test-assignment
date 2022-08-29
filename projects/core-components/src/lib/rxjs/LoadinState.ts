@@ -16,7 +16,9 @@ export interface SuccessState<T> {
   data: T;
 }
 
-export type ObservableState<T> = Observable<LadingState | ErrorState | SuccessState<T>>;
+export type IAPIState<T> = LadingState | ErrorState | SuccessState<T>
+
+export type ObservableState<T> = Observable<IAPIState<T>>;
 
 export const wrapObservableState = <T>(observable: Observable<T>): ObservableState<T> => {
   return observable.pipe(

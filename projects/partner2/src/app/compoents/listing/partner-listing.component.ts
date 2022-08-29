@@ -27,10 +27,8 @@ export class PartnerListingComponent extends ListingComponent implements OnDestr
   override ngOnInit(): void {
       super.ngOnInit();
       this.subscriptions.push(this.data$.subscribe(data => {
-        console.log(data);
         if(data.state === 'success') {
           this.stateGrade.next(this.buildHeatMap(data.data));
-          console.log(this.stateGrade.value)
         }
       }));
   }

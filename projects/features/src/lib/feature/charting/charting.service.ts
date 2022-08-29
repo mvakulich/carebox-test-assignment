@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ObservableState, wrapObservableState } from 'projects/core-components/src/public_api';
+import { share } from 'rxjs/operators'
 
 export interface IChartTimePoint {
   state: string;

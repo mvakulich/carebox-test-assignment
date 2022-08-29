@@ -14,10 +14,7 @@ export class ListingComponent implements OnInit {
   constructor(private readonly listingService: ListingService) { }
 
   ngOnInit(): void {
-    console.log('init listing component');
-    this.data$ = this.listingService.getData().pipe(
-      tap(data => console.log("got data", data)),
-    );
+    this.data$ = this.listingService.getData();
   }
 
   public highlight(): void {

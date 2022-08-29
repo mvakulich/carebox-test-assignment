@@ -9,9 +9,6 @@ import { map, tap } from 'rxjs/operators';
   styleUrls: ['./charting.component.css']
 })
 export class ChartingComponent extends FeatureChartingComponent implements OnInit {
-  @Input()
-  state: string;
-
   chartData$!: Observable<any> 
 
   ngOnInit() {
@@ -23,7 +20,7 @@ export class ChartingComponent extends FeatureChartingComponent implements OnIni
           const selection = data.data.positive;
           return [{
             name: 'Positive progression',
-            series: selection.data.map(s => ({
+            series: selection.data.filter(({count}) => count !== null).map(s => ({
               value: s.count,
               name: s.timestamp
             }))
@@ -31,7 +28,6 @@ export class ChartingComponent extends FeatureChartingComponent implements OnIni
         }
         return undefined;
       }),
-      tap((data) => console.log("chartData", data))
     )
   }
 }
