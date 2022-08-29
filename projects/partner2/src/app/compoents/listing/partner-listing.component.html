@@ -1,4 +1,4 @@
-<ng-container *ngIf="data$ | async as data">
+<ng-container *ngIf="(data$ | async) as data">
   <div *ngIf="data.state === 'loading'">Loading...</div>
   <span *ngIf="data.state === 'error'">error</span>
   <div *ngIf="data.state === 'success'" class="data-container" [ngClass]="{'expanded': selectedState$ | async}">

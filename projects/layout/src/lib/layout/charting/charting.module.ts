@@ -12,8 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
-    NgxChartsModule,
-    BrowserAnimationsModule
+    NgxChartsModule
   ],
   exports: [ChartingComponent]
 })

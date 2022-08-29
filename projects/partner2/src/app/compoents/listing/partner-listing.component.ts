@@ -13,7 +13,7 @@ import { map, share, switchMap, tap } from 'rxjs/operators';
 })
 export class PartnerListingComponent extends ListingComponent implements OnDestroy, AfterViewInit {
 
-  @ViewChildren('usMap', {read: ElementRef<SVGElement>}) el: QueryList<ElementRef<SVGElement>>;
+  @ViewChildren('usMap', {read: ElementRef}) el: QueryList<ElementRef<SVGElement>>;
 
   stateGrade = new BehaviorSubject<Record<string, number>>({});
   selectedState$ = new BehaviorSubject<string | undefined>(undefined);
