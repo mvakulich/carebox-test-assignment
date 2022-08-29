@@ -1,0 +1,32 @@
+<ng-container *ngIf="data$ | async as data">
+  <span *ngIf="data.state === 'loading'">Loading....</span>
+  <span *ngIf="data.state === 'error'">{{data.error.message}}</span>
+  <ul *ngIf="data.state === 'success'" class="covid-list">
+    <li *ngFor="let state of data.data" class="colid-list-item">
+      <h3>{{state.metadata.name}}</h3>
+      <table>
+        <tr>
+          <th>Cases</th>
+          <th>Tests</th>
+          <th>Hospitalized</th>
+          <th>in ICU</th>
+          <th>on Ventilation</th>
+          <th>Outcomes</th>
+          <th>Total Tests results</th>
+        </tr>
+        <tbody>
+          <tr>
+            <td>{{state.probableCases | na}}</td>
+            <td>{{state.totalTestResults | na}}</td>
+            <td>{{state.hospitalizedCurrently | na}}</td>
+            <td>{{state.inIcuCurrently | na}}</td>
+            <td>{{state.onVentilatorCurrently | na}}</td>
+            <td>{{state.deathConfirmed | na}}</td>
+            <td>{{state.totalTestsViral | na}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <markdown>{{state.metadata.notes}}</markdown>
+    </li>
+  </ul>
+</ng-container>
