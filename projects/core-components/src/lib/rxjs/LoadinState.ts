@@ -2,16 +2,16 @@ import { Observable, of } from "rxjs";
 import { catchError, startWith, map } from "rxjs/operators";
 
 
-interface LadingState {
+export interface LadingState {
   state: 'loading';
 }
 
-interface ErrorState {
+export interface ErrorState {
   state: 'error';
   error: Error;
 }
 
-interface SuccessState<T> {
+export interface SuccessState<T> {
   state: 'success';
   data: T;
 }

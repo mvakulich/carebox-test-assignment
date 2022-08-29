@@ -1,0 +1,15 @@
+<ng-container *ngIf="data$ | async as data" [ngSwitch]="data.state">
+  <span *ngSwitchCase="'loading'">Loading...</span>
+  <span *ngSwitchCase="'error'">{{error.message}}</span>
+
+  <span *ngIf="chartData$ | async as chartData">
+    <ngx-charts-line-chart
+        *ngIf="data.state === 'success'"
+        [view]="[200,200]"
+        class="chart-container"
+        [results]="chartData"
+      >
+    </ngx-charts-line-chart>
+  </span>
+</ng-container>
+  

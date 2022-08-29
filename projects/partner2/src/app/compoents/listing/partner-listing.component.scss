@@ -13,7 +13,25 @@
     }
   }
 }
+
 ul li {
   list-style-type: none;
 }
+
+.data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &.expanded {
+    .data-charts {
+      width: 300px; 
+    }
+  }
+
+  .data-charts {
+    width: 0;
+    transition: width 200ms ease-in-out;
+  }
+}
+
 
